@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('blogs.index');
+});
+
+Route::get('/blogs/single', function () {
+    return view("blogs.show");
 });
