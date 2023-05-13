@@ -4,57 +4,34 @@
         <div class="widget-list">
             <article class="card mb-4">
                 <div class="card-image">
-                    {{-- <div class="post-info"> <span class="text-uppercase">1 minutes
-                            read</span>
-                    </div> --}}
+                    <div class="post-info">
+                        <span class="text-uppercase"> {{ $randomBlog->created_at->format('d M Y') }} </span>
+                    </div>
                     <img loading="lazy" decoding="async" src="/images/post/post-9.jpg" alt="Post Thumbnail"
                         class="w-100">
                 </div>
                 <div class="card-body px-0 pb-1">
-                    <h3><a class="post-title post-title-sm" href="/blogs/single">Portugal
-                            and France Now
-                            Allow Unvaccinated Tourists</a></h3>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit, sed do eiusmod tempor …</p>
-                    <div class="content"> <a class="read-more-btn" href="/blogs/single">Read Full Article</a>
+                    <h3>
+                        <a class="post-title post-title-sm" href="/blogs/{{ $randomBlog->slug }}">
+                            {{ substr($randomBlog->title, 0, 20)."..." }}
+                        </a>
+                    </h3>
+                    <p class="card-text"> {{ substr($randomBlog->body, 0, 50).'...' }} </p>
+                    <div class="content"> <a class="read-more-btn" href="/blogs/{{ $randomBlog->slug }}">Read Full
+                            Article</a>
                     </div>
                 </div>
             </article>
-            <a class="media align-items-center" href="/blogs/single">
+
+            @foreach ($randomBlogs as $blog)
+            <a class="media align-items-center" href="/blogs/{{ $blog->slug }}">
                 <img loading="lazy" decoding="async" src="/images/post/post-2.jpg" alt="Post Thumbnail" class="w-100">
                 <div class="media-body ml-3">
-                    <h3 style="margin-top:-5px">These Are Making It Easier To Visit
-                    </h3>
-                    <p class="mb-0 small">Heading Here is example of hedings. You
-                        can
-                        use …</p>
+                    <h3 style="margin-top:-5px"> {{ substr($blog->title, 0, 10) }} </h3>
+                    <p class="mb-0 small"> {{ substr($blog->body, 0, 50)."..." }} </p>
                 </div>
             </a>
-            <a class="media align-items-center" href="/blogs/single"> <span class="image-fallback image-fallback-xs">No
-                    Image
-                    Specified</span>
-                <div class="media-body ml-3">
-                    <h3 style="margin-top:-5px">No Image specified</h3>
-                    <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur
-                        adipiscing …</p>
-                </div>
-            </a>
-            <a class="media align-items-center" href="/blogs/single">
-                <img loading="lazy" decoding="async" src="/images/post/post-5.jpg" alt="Post Thumbnail" class="w-100">
-                <div class="media-body ml-3">
-                    <h3 style="margin-top:-5px">Perfect For Fashion</h3>
-                    <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur
-                        adipiscing …</p>
-                </div>
-            </a>
-            <a class="media align-items-center" href="/blogs/single">
-                <img loading="lazy" decoding="async" src="/images/post/post-9.jpg" alt="Post Thumbnail" class="w-100">
-                <div class="media-body ml-3">
-                    <h3 style="margin-top:-5px">Record Utra Smooth Video</h3>
-                    <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur
-                        adipiscing …</p>
-                </div>
-            </a>
+            @endforeach
 
         </div>
     </div>

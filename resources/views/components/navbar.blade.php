@@ -10,8 +10,15 @@
                     data-target="#navigation"> <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <form action="#!" class="search order-lg-3 order-md-2 order-3 ml-auto">
-                <input id="search-query" name="s" type="search" placeholder="Search..." autocomplete="off">
+            <form action="/" class="search order-lg-3 order-md-2 order-3 ml-auto">
+                @if (request("category"))
+                <input type="hidden" name="category" value="{{ request('category') }}">
+                @endif
+                @if (request("user"))
+                <input type="hidden" name="user" value="{{ request('user') }}">
+                @endif
+                <input id="search-query" name="search" value="{{ request('search') ?? '' }}" type="search"
+                    placeholder="Search..." autocomplete="off">
             </form>
             <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
                 <ul class="navbar-nav mx-auto mt-3 mt-lg-0">

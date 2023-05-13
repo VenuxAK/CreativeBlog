@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Blog;
 use Illuminate\View\Component;
 
 class RecommendedBlogs extends Component
@@ -23,6 +24,11 @@ class RecommendedBlogs extends Component
      */
     public function render()
     {
-        return view('components.recommended-blogs');
+        $recommendedBlogs = Blog::inRandomOrder()->take(4)->get();
+        $recommendedBlog = $recommendedBlogs->first();
+        return view('components.recommended-blogs', [
+            "randomBlogs" => $recommendedBlogs->slice(1),
+            "randomBlog" => $recommendedBlog,
+        ]);
     }
 }
