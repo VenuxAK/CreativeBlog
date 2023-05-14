@@ -25,7 +25,7 @@ class Categories extends Component
     public function render()
     {
         return view('components.categories', [
-            "categories" => Category::all()
+            "categories" => Category::with("blogs")->get()
         ]);
     }
 }

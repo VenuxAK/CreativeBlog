@@ -1,6 +1,6 @@
 <div class="widget">
     <h2 class="section-title mb-3">Recommended</h2>
-    <div class="widget-body">
+    <div class="widget-body"> 
         <div class="widget-list">
             <article class="card mb-4">
                 <div class="card-image">

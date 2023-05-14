@@ -17,7 +17,6 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,5 +45,9 @@ class User extends Authenticatable
     public function blogs()
     {
         return $this->hasMany(Blog::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

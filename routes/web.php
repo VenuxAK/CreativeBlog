@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,13 +19,15 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", [BlogController::class, "index"]);
 Route::get("/blogs/{blog:slug}", [BlogController::class, "show"]);
 
+// Comment
+Route::post("/blogs/{blog:slug}/comment/send", [CommentController::class, "store"]);
 
 // *** Auth *** //
 
 // Register
-Route::get("/register", [AuthController::class, "register"]);
-Route::post("/register", [AuthController::class, "store"]);
-Route::get("/login", [AuthController::class, "login"]);
-Route::post("/login", [AuthController::class, "post_login"]);
+Route::get("/register", [AuthController::class, "register"])->middleware("guest");
+Route::post("/register", [AuthController::class, "store"])->middleware("guest");
+Route::get("/login", [AuthController::class, "login"])->middleware("guest");
+Route::post("/login", [AuthController::class, "post_login"])->middleware("guest");
 
-Route::post("/logout", [AuthController::class, "logout"]);
+Route::post("/logout", [AuthController::class, "logout"])->middleware("auth");
