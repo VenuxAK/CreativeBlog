@@ -2,6 +2,15 @@
     <main>
         <section class="section">
             <div class="container">
+                @if (session("success"))
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <div class="alert alert-success" role="alert">
+                            {{ session("success") }}
+                        </div>
+                    </div>
+                </div>
+                @endif
                 <div class="row no-gutters-lg">
                     <div class="col-12">
                         <h2 class="section-title">

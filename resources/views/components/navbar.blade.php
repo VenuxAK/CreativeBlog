@@ -41,10 +41,20 @@
                             Account
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Register</a>
-                            <a class="dropdown-item" href="#">Login</a>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            @guest
+                            <a class="dropdown-item" href="/register">Register</a>
+                            <a class="dropdown-item" href="/login">Login</a>
+                            @endguest
+                            @auth
+                            <a class="dropdown-item" href="#"> Welcome {{ auth()->user()->name }} </a>
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item focus-none" onclick="return confirm('Are you sure want to logout?')">
+                                    Logout
+                                </button>
+                            </form>
                             <a class="dropdown-item" href="#">Setting</a>
+                            @endauth
                         </div>
                     </li>
                     <li class="nav-item">

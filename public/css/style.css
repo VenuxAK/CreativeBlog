@@ -933,3 +933,7 @@ footer .section {
   box-shadow: none;
 }
 /*# sourceMappingURL=style.css.map */
+
+.focus-none:focus {
+    outline: none;
+}
