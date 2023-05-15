@@ -1,6 +1,22 @@
 <div class="comment-wrapper my-5">
     <div class="panel panel-info">
-        <h4>Comments</h4>
+        <div class="d-flex justify-content-between align-items-center my-3">
+            <div>
+                <h4>Comments</h4>
+            </div>
+            @auth
+            <div>
+                <form action="/blogs/{{ $blog->slug }}/subscription" method="POST">
+                    @csrf
+                    @if (auth()->user()->isSubscribed($blog))
+                    <button class="btn btn-danger">Unsubscribe</button>
+                    @else
+                    <button class="btn btn-warning">Subcribe</button>
+                    @endif
+                </form>
+            </div>
+            @endauth
+        </div>
         <div class="panel-body">
             @auth
             <form action="/blogs/{{ $blog->slug }}/comment/send" method="POST">
@@ -19,7 +35,7 @@
             <div class="clearfix"></div>
             <hr>
             <ul class="media-list">
-                @forelse ($blog->comments as $comment)
+                @forelse ($comments as $comment)
                 <li class="media">
                     <a href="#" class="pull-left">
                         <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
@@ -33,9 +49,10 @@
                     </div>
                 </li>
                 @empty
-
+                <p>No one comments yet</p>
                 @endforelse
             </ul>
+            {{ $comments->links() }}
         </div>
     </div>
 </div>

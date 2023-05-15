@@ -33,7 +33,7 @@
                                 {!! $blog->body !!}
                             </div>
                         </article>
-                        <x-comments-box :blog="$blog" />
+                        <x-comments-box :comments="$blog->comments()->latest()->paginate(3)" :blog="$blog" />
                     </div>
                     <div class="col-lg-4">
                         <x-sidebar />

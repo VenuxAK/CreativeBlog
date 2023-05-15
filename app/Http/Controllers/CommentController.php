@@ -18,6 +18,6 @@ class CommentController extends Controller
             "user_id" => auth()->user()->id,
             "blog_id" => $blog->id
         ]);
-        return redirect()->back();
+        return redirect("/blogs/$blog->slug");
     }
 }

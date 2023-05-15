@@ -20,7 +20,10 @@ Route::get("/", [BlogController::class, "index"]);
 Route::get("/blogs/{blog:slug}", [BlogController::class, "show"]);
 
 // Comment
-Route::post("/blogs/{blog:slug}/comment/send", [CommentController::class, "store"]);
+Route::post("/blogs/{blog:slug}/comment/send", [CommentController::class, "store"])->middleware("auth");
+
+// Subscription
+Route::post("/blogs/{blog:slug}/subscription", [BlogController::class, "subscriptionHandler"])->middleware("auth");
 
 // *** Auth *** //
 
