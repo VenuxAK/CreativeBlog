@@ -4,7 +4,7 @@
             <div class="post-info">
                 <span class="text-uppercase"> {{ $latestBlog->created_at->format('d M Y') }} </span>
             </div>
-            <img loading="lazy" decoding="async" src="/images/post/post-1.jpg" alt="Post Thumbnail" class="w-100">
+            <img loading="lazy" decoding="async" src="/assets/images/post/post-1.jpg" alt="Post Thumbnail" class="w-100">
         </div>
     </a>
     <div class="card-body px-0 pb-1">

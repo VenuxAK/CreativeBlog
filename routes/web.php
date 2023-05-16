@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
@@ -34,3 +35,7 @@ Route::get("/login", [AuthController::class, "login"])->middleware("guest");
 Route::post("/login", [AuthController::class, "post_login"])->middleware("guest");
 
 Route::post("/logout", [AuthController::class, "logout"])->middleware("auth");
+
+// *** Admin *** //
+
+require_once "admin.php";

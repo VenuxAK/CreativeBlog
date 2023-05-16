@@ -16,10 +16,10 @@
         rel="stylesheet">
 
     {{-- Main Style --}}
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 
     {{-- Plugin CSS --}}
-    <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/bootstrap.min.css">
     <title>CreativeBlog</title>
 </head>
 
@@ -29,11 +29,11 @@
     {{ $slot }}
     <x-footer />
     <!-- # JS Plugins -->
-    <script src="/plugins/jquery/jquery.min.js"></script>
-    <script src="/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="/assets/plugins/jquery/jquery.min.js"></script>
+    <script src="/assets/plugins/bootstrap/bootstrap.min.js"></script>
 
     <!-- Main Script -->
-    <script src="/js/script.js"></script>
+    <script src="/assets/js/script.js"></script>
 </body>
 
 </html>
