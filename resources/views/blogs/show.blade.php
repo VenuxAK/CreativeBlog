@@ -5,8 +5,8 @@
                 <div class="row no-gutters-lg">
                     <div class="col-lg-8 mb-5 mb-lg-0">
                         <article>
-                            <img loading="lazy" decoding="async" src="/assets/images/post/post-4.jpg" alt="Post Thumbnail"
-                                class="w-100">
+                            <img loading="lazy" decoding="async" src='{{ asset("/storage/$blog->thumbnail") }}'
+                                alt="Post Thumbnail" class="w-100">
                             <ul class="d-flex justify-content-between post-meta mb-2 mt-4">
                                 <li>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

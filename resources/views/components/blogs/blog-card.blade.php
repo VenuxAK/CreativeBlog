@@ -25,7 +25,7 @@
         <h2>
             <a class="post-title" href="/blogs/{{$blog->slug}}"> {{ substr($blog->title, 0, 15)."..." }} </a>
         </h2>
-        <p class="card-text"> {{ substr($blog->body, 0, 70)."..." }} </p>
+        <p class="card-text"> {!! substr($blog->body, 0, 70)."..." !!} </p>
         <div class="content"> <a class="read-more-btn" href="/blogs/{{$blog->slug}}">Read Full
                 Article</a>
         </div>

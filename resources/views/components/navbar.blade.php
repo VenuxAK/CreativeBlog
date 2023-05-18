@@ -30,7 +30,8 @@
                             aria-haspopup="true" aria-expanded="false">
                             Articles
                         </a>
-                        <div class="dropdown-menu"> <a class="dropdown-item" href="#">Travel</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Travel</a>
                             <a class="dropdown-item" href="#">Lifestyle</a>
                             <a class="dropdown-item" href="#">Cruises</a>
                         </div>
@@ -49,7 +50,8 @@
                             <a class="dropdown-item" href="#"> Welcome {{ auth()->user()->name }} </a>
                             <form action="/logout" method="POST">
                                 @csrf
-                                <button type="submit" class="dropdown-item focus-none" onclick="return confirm('Are you sure want to logout?')">
+                                <button type="submit" class="dropdown-item focus-none"
+                                    onclick="return confirm('Are you sure want to logout?')">
                                     Logout
                                 </button>
                             </form>
@@ -57,6 +59,11 @@
                             @endauth
                         </div>
                     </li>
+                    @can ('admin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Dashboard</a>
+                    </li>
+                    @endcan
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>

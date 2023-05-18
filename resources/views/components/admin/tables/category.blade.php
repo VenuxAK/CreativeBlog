@@ -9,19 +9,26 @@
                 <th>Name</th>
                 <th>Slug</th>
                 <th>Created At</th>
-                <th class="text-center">Action</th>
+                <th class="text-center" colspan="2">Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (range(0,3) as $blog)
+            @foreach ($categories as $category)
             <tr>
-                <td>{{ $loop->index + 1 }}</td>
-                <td> Travel </td>
-                <td>travel</td>
-                <td>16 May 2023</td>
+                <td>{{ $category->id }}</td>
+                <td> {{ $category->name }} </td>
+                <td> {{ $category->slug }} </td>
+                <td> {{ $category->created_at->format("j M Y") }} </td>
                 <td class="text-center">
-                    <a href="/admin/categories/name/edit" class="btn btn-warning">Edit</a>
-                    <button class="btn btn-danger">Delete</button>
+                    <a href="/admin/categories/{{$category->slug}}/edit" class="btn btn-warning">Edit</a>
+                </td>
+                <td class="text-center">
+                    <form action="/admin/categories/{{$category->slug}}/delete" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Are you sure want to delete?')">Delete</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

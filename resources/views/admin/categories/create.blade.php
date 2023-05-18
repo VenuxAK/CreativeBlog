@@ -8,11 +8,13 @@
                     @csrf
                     <div class="mb-3">
                         <label for="inputName" class="form-label">Name</label>
-                        <input name="name" type="text" class="form-control" id="inputName">
+                        <input name="name" value="{{ old('name') }}" type="text" class="form-control" id="inputName">
+                        <x-error name="name" />
                     </div>
                     <div class="mb-3">
                         <label for="inputSlug" class="form-label">Slug</label>
-                        <input name="slug" type="text" class="form-control" id="inputSlug">
+                        <input name="slug" value="{{ old('slug') }}" type="text" class="form-control" id="inputSlug">
+                        <x-error name="slug" />
                     </div>
                     <button type="submit" class="btn btn-primary">Create</button>
                 </form>

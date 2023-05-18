@@ -7,8 +7,9 @@
             <tr>
                 <th>#</th>
                 <th>Title</th>
-                <th>Author</th>
                 <th>Intro</th>
+                <th>Author</th>
+                <th>Category</th>
                 <th>Created At</th>
                 @if (!Request::is('admin'))
                 <th class="text-center" colspan="2">Action</th>
@@ -16,25 +17,32 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (range(0,5) as $blog)
+            @foreach ($blogs as $blog)
             <tr>
-                <td>{{ $loop->index + 1 }}</td>
+                <td>{{ $blog->id }}</td>
                 <td>
-                    <a href="#" target="_blank">What is programming?</a>
+                    <a href="/blogs/{{$blog->slug}}" target="_blank"> {{ $blog->title }} </a>
                 </td>
-                <td>Minn</td>
-                <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti</td>
-                <td>16 May 2023</td>
+                <td> {!! substr($blog->body, 0, 20)."..." !!} </td>
+                <td> {{ $blog->author->name }} </td>
+                <td> {{ $blog->category->name }} </td>
+                <td> {{ $blog->created_at->format('j M Y') }} </td>
                 @if (!Request::is('admin'))
                 <td>
-                    <a href="/admin/blogs/blog-name/edit" class="btn btn-warning">Edit</a>
+                    <a href="/admin/blogs/{{ $blog->slug }}/edit" class="btn btn-warning">Edit</a>
                 </td>
                 <td>
-                    <button class="btn btn-danger">Delete</button>
+                    <form action="/admin/blogs/{{$blog->slug}}/delete" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Are you sure want to delete this blog')">Delete</button>
+                    </form>
                 </td>
                 @endif
             </tr>
             @endforeach
         </tbody>
     </x-admin.table>
+    {{ $paginate }}
 </x-admin.card>
